@@ -4,9 +4,12 @@ new Vue({
   data() {
     return {
       name: 'Bitcoin',
+      symbol: 'BTC',
       img:'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
       changePercent: 0,
-      prices: [100, 200, 300 ,10000, 90909],
+      price:8400,
+      color: 'f4f4f4',
+      value: 0,
 
       pricesWithDays: [
         { day: 'Lunes', value: 8400 },
@@ -16,7 +19,35 @@ new Vue({
         { day: 'Viernes', value: 9400 },
         { day: 'Sabado', value: 10000 },
         { day: 'Domingo', value: 10200 },
-    ]
+    ],
+    showPrices: true
+    }
+  },
+  computed: {
+    title () {
+      return `${this.name} - ${this.symbol}`
+    },
+    convertedValue() {
+      if (!this.value) {
+        return 0
+      }
+
+      return this.value / this.price
+    }
+  },
+
+  watch: {
+    showPrices (newVal, oldVal) {
+      console.log(newVal, oldVal)
+    }
+  },
+
+  methods: {
+    toggleShowPrices() {
+      this.showPrices = !this.showPrices
+
+      this.color = this.color.split('')
+      .reverse().join('')
     }
   }
 })
