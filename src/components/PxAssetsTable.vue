@@ -28,16 +28,15 @@
 </template>
 
 <script>
-
 export default {
   name: "PxAssetsTable",
 
   props: {
     assets: {
       type: Array,
-      default: () => [],
-    },
-  },
+      default: () => []
+    }
+  }
 };
 </script>
 
